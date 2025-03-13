@@ -1,66 +1,64 @@
-## Foundry
+# Foundry Fund Me
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Table of Contents
+* [General Information](#general-information)
+* [Requirements](#requirements)
+* [Prerequisites](#prerequisites)
+* [Program Usage](#program-usage)
+* [Project Status](#project-status)
 
-Foundry consists of:
+## General Information 
+> Smart Contract for fund endowment using Foundry.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Requirements 
+* `Solidity`
+* `Foundry`
+* `Foundry-ZkSync`
+* `Chainlink Data Feeds`
+* `smartcontractkit/chainlink-brownie-contracts`
+* `foundry-rs/forge-std`
+* `cyfrin/foundry-devops`
 
-## Documentation
+## Prerequisites
+> **Ensure that you're in the `main` branch** </br>
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+**Clone this repository using the following command line (git bash)**
+```
+$ git clone https://github.com/sivaren/foundry-fund-me.git
 ```
 
-### Test
+## Program Usage
+* Open `cmd` on this folder and install dependencies
 
-```shell
-$ forge test
-```
+  ```
+  forge install smartcontractkit/chainlink-brownie-contracts@1.1.1 --no-commit
+  forge install foundry-rs/forge-std@v1.8.2 --no-commit
+  forge install cyfrin/foundry-devops@0.2.2 --no-commit
+  ```
+* Deploy `FundMe` contract on **Sepolia Test Network**
+  ```
+  forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url <RPC_URL> --private-key <PRIVATE_KEY> --broadcast
+  ```
+* Run all **test** cases
+  ```
+  forge test  
+  ```
+* Run specific **test** case
+  ```
+  forge test --mt <TEST_FUNCTION_NAME> 
+  ```
+* Inspect **test coverage**
+  ```
+  forge coverage
+  ```
+* Interact with `FundMe` contract | `fund()`
+  ```
+  cast send <CONTRACT_ADDRESS> "fund()" --value 0.01ether --private-key <PRIVATE_KEY> 
+  ```
+* Interact with `FundMe` contract | `withdraw()`
+  ```
+  cast send <CONTRACT_ADDRESS> "withdraw()" --private-key <PRIVATE_KEY>
+  ```
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Project Status
+> **Project is: DONE**
