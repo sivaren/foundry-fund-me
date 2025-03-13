@@ -21,5 +21,4 @@ lib/
 # gas snapshot
 .gas-snapshot
 
-
 .DS_Store
