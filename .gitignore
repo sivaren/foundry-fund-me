@@ -12,9 +12,15 @@ broadcast/
 # Docs
 docs/
 
+# library dependencies 
+lib/
+lib/forge-std/
+
 # Dotenv file
 .env
 
-lib/
+# gas snapshot
+.gas-snapshot
+
 
 .DS_Store
